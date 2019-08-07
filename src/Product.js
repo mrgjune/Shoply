@@ -18,7 +18,6 @@ class Product extends Component {
         this.props.addItem(product)
     }
     remove() {
-        console.log(this.props.id)
         this.props.removeItem(this.props.id)
     }
     

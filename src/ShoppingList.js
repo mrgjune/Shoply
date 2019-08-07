@@ -9,7 +9,7 @@ class ShoppingList extends Component {
         this.removeItem = this.removeItem.bind(this);
     }
     addItem(product) { this.props.addItem(product)}
-    removeItem(product) { this.props.removeItem(product); }
+    removeItem(id) { this.props.removeItem(id); }
 
     render() {
         const invObject = this.props.inventory.products
@@ -42,7 +42,6 @@ class ShoppingList extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.cart)
     return {
         inventory: state.inventory,
         cart: state.cart,
@@ -54,8 +53,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     addItem: (product) => ({
         type: "ADD_ITEM", payload:product}),
-    removeItem: (product) => ({
-    type: "REMOVE_ITEM", payload:product})
+    removeItem: (id) => ({
+    type: "REMOVE_ITEM", payload:id})
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);

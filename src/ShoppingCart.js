@@ -3,29 +3,24 @@ import { connect } from "react-redux";
 import { addItem, removeItem } from "./actions";
 import Product from "./Product";
 class ShoppingCart extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            price: 0
-        }
-       
-    }
-  
 
-    
+
     render() {
-        
-       let item = this.props.cart.map(item => 
-          item= 
-          <div > 
-              {item.name}
-          {/* <img src={item.image_url} alt="img url"></img> */}
-           </div>
-            );
+        console.log(this.props.price)
+        let item = this.props.cart.map(item => {
+            return ( <div>
+                {item.name}
+                {item.price}
+                <img style={{ width: 80 }} src={item.image_url} alt="img url"></img>
+            </div> 
+            )
+        })
+
         return (
-            <div> 
-              Shopping Cart:
-              <div>{item} </div>
+            <div>
+                Shopping Cart:
+              <div>{item}<div>
+                  </div> price: {this.props.price}</div>
             </div>
 
         )
@@ -35,6 +30,7 @@ class ShoppingCart extends Component {
 function mapStateToProps(state) {
     return {
         cart: state.cart,
+        price:state.price
 
     };
 }
